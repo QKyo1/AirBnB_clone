@@ -31,25 +31,25 @@ class TestReview(unittest.TestCase):
         self.assertEqual(review.text, "")
 
     def test_id_is_unique(self):
-        
+
         review1 = Review()
         review2 = Review()
         self.assertNotEqual(review1.id, review2.id)
 
     def test_dates_are_datetime(self):
-        
+
         review = Review()
         self.assertIsInstance(review.created_at, datetime)
         self.assertIsInstance(review.updated_at, datetime)
 
     def test_str_representation(self):
-        
+
         review = Review()
         expected_format = f"[Review] ({review.id}) {review.__dict__}"
         self.assertEqual(expected_format, review.__str__())
 
     def test_save(self):
-        
+
         review = Review()
         old_updated_at = review.updated_at
         review.save()
@@ -57,26 +57,26 @@ class TestReview(unittest.TestCase):
 
     @patch('models.review.Review.save')
     def test_save_called(self, mock_save):
-      
+
         review = Review()
         review.save()
         mock_save.assert_called_once()
 
     def test_to_dict_contains_right_keys(self):
-    
+
         review = Review()
         self.assertIn("id", review.to_dict())
         self.assertIn("created_at", review.to_dict())
         self.assertIn("updated_at", review.to_dict())
 
     def test_to_dict_contains_added_attribute(self):
-     
+
         review = Review()
         review.new_attribute = "value"
         self.assertIn("new_attribute", review.to_dict())
 
     def test_to_dict_correct_time_format(self):
-    
+
         review = Review()
         review_dict = review.to_dict()
         self.assertEqual(type(review_dict["created_at"]), str)

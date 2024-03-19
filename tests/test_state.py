@@ -10,7 +10,6 @@ sys.path.append('../')
 
 
 class TestState(unittest.TestCase):
-  
 
     def test_state_inheritance(self):
 
@@ -48,7 +47,7 @@ class TestState(unittest.TestCase):
         mock_to_dict.assert_called_once()
 
     def test_state_init_no_args(self):
-  
+
         state = State()
         self.assertIsInstance(state, State)
 
@@ -67,7 +66,7 @@ class TestState(unittest.TestCase):
             self.assertEqual(getattr(state, key), value)
 
     def test_state_str(self):
-     
+
         state = State()
         expected_format = f"[State] ({state.id}) {state.__dict__}"
         self.assertEqual(str(state), expected_format)

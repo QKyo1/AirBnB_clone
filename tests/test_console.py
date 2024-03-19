@@ -38,19 +38,19 @@ class TestHBNBCommand(unittest.TestCase):
         """consol3e"""
         with patch('sys.stdout', new=StringIO()) as fake_output:
             self.console.default("invalid_command")
-            self.assertEqual(fake_output.getvalue().strip(), "** invalid command **")
+    self.assertEqual(fake_output.getvalue().strip(), "** invalid command **")
 
     def test_default_invalid_syntax(self):
         """console3"""
         with patch('sys.stdout', new=StringIO()) as fake_output:
             self.console.default("User.show()")
-            self.assertEqual(fake_output.getvalue().strip(), "** invalid command **")
+    self.assertEqual(fake_output.getvalue().strip(), "** invalid command **")
 
     def test_default_non_existing_class(self):
         """console3"""
         with patch('sys.stdout', new=StringIO()) as fake_output:
             self.console.default("NonExistent.show(\"1234\")")
-            self.assertEqual(fake_output.getvalue().strip(), "** class doesn't exist **")
+    self.assertEqual(fake_output.getvalue().strip(), "** class doesn't exist **")
 
     def test_default_show(self):
         """console3"""
@@ -145,14 +145,14 @@ class TestHBNBCommand(unittest.TestCase):
         obj = BaseModel()
         with patch('sys.stdout', new=StringIO()) as fake_output:
             self.console.do_update(f"BaseModel {obj.id}")
-            self.assertEqual(fake_output.getvalue().strip(), "** attribute name missing **")
+    self.assertEqual(fake_output.getvalue().strip(), "** attribute name missing **")
 
     def test_do_update_no_value(self):
         """console"""
         obj = BaseModel()
         with patch('sys.stdout', new=StringIO()) as fake_output:
             self.console.do_update(f"BaseModel {obj.id} name")
-            self.assertEqual(fake_output.getvalue().strip(), "** value missing **")
+self.assertEqual(fake_output.getvalue().strip(), "** value missing **")
 
 
 if __name__ == '__main__':
